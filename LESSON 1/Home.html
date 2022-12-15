@@ -86,7 +86,7 @@
       </div>
     </div>
     <div class="card w-screen bg-base-200 shadow-xl">
-      <div class="card-body form-control m-auto">
+      <div class="card-body form-control m-auto border-2 rounded-box">
         <label class="label">
           <span class="label-text">Create A Post </span>
         </label>
@@ -167,7 +167,7 @@
         localStorage.setItem("post", JSON.stringify(getPost));
         
         $(`
-        <div class="card-body border-2 my-5 mx-2" id=${getPost.length-1}>
+        <div class="card-body border-2 my-5 mx-2 rounded-box" id=${getPost.length-1}>
         <h2 class="card-title">${Title}</h2>
         <p>${Desc}</p>
       </div>`).appendTo("#post");

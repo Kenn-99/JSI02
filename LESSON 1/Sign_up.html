@@ -82,11 +82,11 @@
                 <div class="flex justify-center ..."><button class="btn btn-wide" id="btn-signup">Create
                         account</button></div>
             </div>
-            <div class="text-grey-dark mt-6">
+            <div class="text-grey-dark mt-1">
                 Already have an account?
                 <a class="no-underline border-b border-blue text-blue" href="./Log_in.html">
                     Log in
-                </a>.
+                </a>
             </div>
         </div>
     </div>
@@ -124,6 +124,7 @@
                 });
                 localStorage.setItem("users", JSON.stringify(getAllUser));
                 alert("Success");
+                location.replace("./Log_in.html")
                 return true
             } else {
                 alert("Not Good");
