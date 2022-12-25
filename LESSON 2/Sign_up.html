@@ -102,7 +102,11 @@
     </script>
     <script type="module">
         // Import the functions you need from the SDKs you need
-        import { getAuth, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword
+        } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
@@ -118,7 +122,8 @@
             appId: "1:759919838975:web:ec30aa2f889faed125eeca",
             measurementId: "G-BVNCXC003L"
         };
-
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
         $("#btn-signup").click(() => {
             const getUsernameVal = $("#username").val();
@@ -130,16 +135,24 @@
                 .then((userCredential) => {
                     // Signed in
                     const user = userCredential.user;
+                    alert("Success")
+                    await setDoc(doc(db, "users", getEmailVal), {
+                        getUsernameVal,
+                        getEmailVal,
+                        password
+                    });
+                    location.replace("./Log_in.html")
                     // ...
                 })
                 .catch((error) => {
+                    alert("Pls check again")
+
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     // ..
                 });
         });
         // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
     </script>
 </body>
 
